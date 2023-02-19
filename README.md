@@ -1,1 +1,1 @@
-# data-visualization-B.Sc.-thesis-
+# Data Visualization (B.Sc. thesis)
