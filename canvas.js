@@ -24,9 +24,6 @@ var jsonfile = {
     }]
 };
 
-// Get Canvas element from external HTML file through id
-var chartArea = document.getElementById('myChart');
-
 // Setup - sets values for labels and datapoints
 const labels = jsonfile.jsonarray.map(function(e) {
     return e.label;
@@ -45,6 +42,9 @@ const dataObj = {
         }
     ]
 }
+
+// Get Canvas element from external HTML file through id
+var chartArea = document.getElementById('myChart');
 
 // Render chart
 new Chart(chartArea, {
