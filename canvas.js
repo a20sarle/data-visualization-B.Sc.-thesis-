@@ -43,10 +43,7 @@ const dataObj = {
     ]
 }
 
-// Get Canvas element from external HTML file through id
 var chartArea = document.getElementById('myChart');
-
-// Render chart
 new Chart(chartArea, {
     type: "line", 
     data: dataObj
