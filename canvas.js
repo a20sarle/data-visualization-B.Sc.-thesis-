@@ -44,7 +44,18 @@ const dataObj = {
 }
 
 var chartArea = document.getElementById('myChart');
-new Chart(chartArea, {
+const chartContent = new Chart(chartArea, {
     type: "line", 
-    data: dataObj
+    data: dataObj,
+    options: {
+        onClick: (e) => {
+            const canvasPosition = Chart.helpers.getRelativePosition(e, chartArea);
+
+            // Substitute the appropriate scale IDs
+            const dataX = chartContent.scales.x.getValueForPixel(canvasPosition.x);
+            const dataY = chartContent.scales.y.getValueForPixel(canvasPosition.y);
+
+            alert("dataX: "+dataX+", dataY: "+dataY);
+        }
+    }
 });
