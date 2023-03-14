@@ -48,6 +48,12 @@ const chartContent = new Chart(chartArea, {
     type: "line", 
     data: dataObj,
     options: {
+        interaction: {
+            // intersec must be false for mode 'nearest' since if true, the interaction
+            // mode only applies when the mouse position intersects an item on the chart.
+            intersect: false,
+            mode: 'nearest'
+        },
         onClick: (e) => {
             const canvasPosition = Chart.helpers.getRelativePosition(e, chartArea);
 
