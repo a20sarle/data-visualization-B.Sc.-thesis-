@@ -1,7 +1,5 @@
 // Generate an array with int values
 // based on a constant interval
-const minValue = 1;
-const maxValue = 10;
 const anomaliesFinalArray = [];
 
 function getTemperature(min, max) {
@@ -24,7 +22,7 @@ function getLabel() {
     return "x"+monthShort+"-"+dateShort;
 }
 
-for (let n = minValue; n <= maxValue; n += 1.00) {
+for (let i = 0; i < 5; i++) {
 
     var date = getLabel();
     var temparature = getTemperature(-1.0448954, 1.2235883);
