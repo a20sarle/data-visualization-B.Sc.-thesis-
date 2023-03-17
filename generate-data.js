@@ -25,9 +25,9 @@ function getLabel() {
 for (let i = 0; i < 5; i++) {
 
     var date = getLabel();
-    var temparature = getTemperature(-1.0448954, 1.2235883);
+    var temperature = getTemperature(-1.0448954, 1.2235883);
 
-    anomaliesFinalArray.push({ label: date, temp: temparature });
+    anomaliesFinalArray.push({ label: date, temp: temperature });
 }
 
 console.log(anomaliesFinalArray);
