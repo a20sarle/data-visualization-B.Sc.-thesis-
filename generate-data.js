@@ -7,24 +7,23 @@ function getTemperature(min, max) {
     return temp.toFixed(7);
 }
 
-function getLabel() {
+function getLabel(i) {
 
-    // Ex. "Thu Jul 29 1999 05:36:14 GMT+0200 (Central European Summer Time)"
-    var longDate = new Date(new Date() - Math.random()*(1e+12));
+    let d = new Date('2023-01-01');
 
-    // Ex. "Jul" instead of 7 (from Thu Jul 29).
-    var formatMonth = new Intl.DateTimeFormat("en-US", { month: "short" }).format;
-    var monthShort = formatMonth(longDate);
+    let month = d.setMonth(d.getMonth() + i);
+    formatMonth = new Intl.DateTimeFormat("en-US", { month: "short" }).format;
+    month = formatMonth(d);
+    
+    let year = d.getUTCFullYear();
+    year = year.toString().substr(-2);
 
-    // Ex. "29" (from Thu Jul 29).
-    var dateShort = longDate.getDate();
-
-    return "x"+monthShort+"-"+dateShort;
+    return "x"+year+"-"+month;
 }
 
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 24; i++) {
 
-    var date = getLabel();
+    var date = getLabel(i);
     var temperature = getTemperature(-1.0448954, 1.2235883);
 
     anomaliesFinalArray.push({ label: date, temp: temperature });
