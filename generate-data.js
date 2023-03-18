@@ -16,7 +16,7 @@ function getLabel(i) {
     month = formatMonth(d);
     
     let year = d.getUTCFullYear();
-    year = year.toString().substr(-2);
+    year = year.toString().substring(2);
 
     return "x"+year+"-"+month;
 }
