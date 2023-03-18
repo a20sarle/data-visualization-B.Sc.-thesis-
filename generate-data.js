@@ -21,6 +21,7 @@ function getLabel(i) {
     return "x"+year+"-"+month;
 }
 
+// Change i to adjust quantity of datapoints to generate
 for (let i = 0; i < 24; i++) {
 
     var date = getLabel(i);
