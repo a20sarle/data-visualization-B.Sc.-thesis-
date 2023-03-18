@@ -22,7 +22,10 @@ function getLabel(i) {
 }
 
 // Change i to adjust quantity of datapoints to generate
-for (let i = 0; i < 24; i++) {
+
+// 100 000 datapoints were needed while the HadCRUT dataset is limited
+// to 2076 datapoints, therefore the remaining 97 924 datapoints were auto generated.
+for (let i = 0; i < 97924; i++) {
 
     var date = getLabel(i);
     var temperature = getTemperature(-1.0448954, 1.2235883);
