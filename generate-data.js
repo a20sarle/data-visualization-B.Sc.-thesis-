@@ -30,3 +30,11 @@ for (let i = 0; i < 24; i++) {
 }
 
 console.log(anomaliesFinalArray);
+
+// Download generated data
+var downloadBtn = document.getElementById('generateData');
+downloadBtn.setAttribute("download", "temperatures.json");
+downloadBtn.onclick = function() {
+    var temperatureData = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(anomaliesFinalArray,undefined,2));
+    downloadBtn.setAttribute("href", temperatureData);
+};
