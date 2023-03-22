@@ -204,7 +204,7 @@ const datapoints = jsonfile1.jsonarray.map(function(e) {
     return e.temp;
  });
  const datapoints2 = jsonfile2.jsonarray.map(function(e) {
-    return e.temp + 1;
+    return e.temp;
  });
 
 // Config - used to change how the chart behaves
