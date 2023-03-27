@@ -9,6 +9,14 @@ const datapoints = jsonfile1.jsonarray.map(function(e) {
     return e.temp;
  });
 
+ labels.forEach(element => {
+    if(element.includes('x')){
+        console.log('x found: '+element);
+    } else {
+        console.log('x NOT found: '+element);
+    }
+ });
+
 // Config - used to change how the chart behaves
 const dataObj = {
     labels: labels,
