@@ -54,3 +54,14 @@ const chartContent = new Chart(chartArea, {
         }
     }
 });
+
+// Function changing -0.75 to 3 in jsonfile1.
+// -0.75 is the first temp value in the first object in JSON array.
+//      * chartContent  = the chart
+//      * data          = data (in 'data: dataObj')
+//      * datasets[0]   = the first object of datasets in const 'dataObj'
+//      * data[0]       = first index of JSON array 'datapoints' holding temperatures
+function updateTheData() {
+    chartContent.data.datasets[0].data[0] = 3;
+    chartContent.update();
+}
