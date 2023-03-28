@@ -5,9 +5,23 @@ const labels = jsonfile1.jsonarray.map(function(e) {
 const datapoints = jsonfile1.jsonarray.map(function(e) {
     return e.temp;
  });
+
+ const labels2 = jsonfile1.jsonarray.map(function(e) {
+    return e.label;
+ });
  const datapoints2 = jsonfile2.jsonarray.map(function(e) {
     return e.temp;
  });
+
+var finalObjLabels = labels.concat(labels2);
+console.log(labels);
+console.log(labels2);
+console.log(finalObjLabels);
+
+var finalObjTemp = datapoints.concat(datapoints2);
+console.log(datapoints);
+console.log(datapoints2);
+console.log(finalObjTemp);
 
  labels.forEach(element => {
     if(element.includes('x')){
@@ -19,7 +33,7 @@ const datapoints = jsonfile1.jsonarray.map(function(e) {
 
 // Config - used to change how the chart behaves
 const dataObj = {
-    labels: labels,
+    labels: finalObjLabels,
     datasets: [
         {
             label: "Values",
@@ -28,6 +42,10 @@ const dataObj = {
         {
             label: "Values",
             data: datapoints2
+        },
+        {
+            label: "Values",
+            data: finalObjTemp
         }
     ]
 }
@@ -62,6 +80,6 @@ const chartContent = new Chart(chartArea, {
 //      * datasets[0]   = the first object of datasets in const 'dataObj'
 //      * data[0]       = first index of JSON array 'datapoints' holding temperatures
 function updateTheData() {
-    chartContent.data.datasets[0].data = datapoints2;
+    chartContent.data.datasets[0].data[0];
     chartContent.update();
 }
