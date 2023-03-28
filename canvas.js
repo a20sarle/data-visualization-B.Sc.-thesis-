@@ -62,6 +62,6 @@ const chartContent = new Chart(chartArea, {
 //      * datasets[0]   = the first object of datasets in const 'dataObj'
 //      * data[0]       = first index of JSON array 'datapoints' holding temperatures
 function updateTheData() {
-    chartContent.data.datasets[0].data[0] = 3;
+    chartContent.data.datasets[0].data = datapoints2;
     chartContent.update();
 }
