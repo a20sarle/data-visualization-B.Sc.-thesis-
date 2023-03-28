@@ -29,14 +29,6 @@ const dataObj = {
     datasets: [
         {
             label: "Values",
-            data: datapoints
-        },
-        {
-            label: "Values",
-            data: datapoints2
-        },
-        {
-            label: "Values",
             data: finalObjTemp
         }
     ]
@@ -56,13 +48,29 @@ const chartContent = new Chart(chartArea, {
     }
 });
 
+let button1 = document.getElementById("btnShow1");
+button1.addEventListener('click', function () {
+    updateTheData(datapoints, labels);
+});
+
+let button2 = document.getElementById("btnShow2");
+button2.addEventListener('click', function () {
+    updateTheData(datapoints2, labels2);
+});
+
+let buttonA = document.getElementById("btnShowA");
+buttonA.addEventListener('click', function () {
+    updateTheData(finalObjTemp, finalObjLabels);
+});
+
 // Function changing -0.75 to 3 in jsonfile1.
 // -0.75 is the first temp value in the first object in JSON array.
 //      * chartContent  = the chart
 //      * data          = data (in 'data: dataObj')
 //      * datasets[0]   = the first object of datasets in const 'dataObj'
 //      * data[0]       = first index of JSON array 'datapoints' holding temperatures
-function updateTheData() {
-    chartContent.data.datasets[0].data[0];
+function updateTheData(temp, label) {
+    chartContent.data.datasets[0].data = temp;
+    chartContent.data.labels = label;
     chartContent.update();
 }
