@@ -58,7 +58,7 @@ button2.addEventListener('click', function () {
     updateTheData(datapoints2, labels2);
 });
 
-let buttonA = document.getElementById("btnShowA");
+let buttonA = document.getElementById("btnShow3");
 buttonA.addEventListener('click', function () {
     updateTheData(finalObjTemp, finalObjLabels);
 });
