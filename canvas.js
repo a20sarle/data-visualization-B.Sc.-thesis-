@@ -1,17 +1,17 @@
 // Setup - sets values for labels and datapoints
-const labels = jsonfile1.jsonarray.map(function(e) {
+const labels = jsonfile1.jsonarray.map(function (e) {
     return e.label;
- });
-const datapoints = jsonfile1.jsonarray.map(function(e) {
+});
+const datapoints = jsonfile1.jsonarray.map(function (e) {
     return e.temp;
- });
+});
 
- const labels2 = jsonfile1.jsonarray.map(function(e) {
+const labels2 = jsonfile1.jsonarray.map(function (e) {
     return e.label;
- });
- const datapoints2 = jsonfile2.jsonarray.map(function(e) {
+});
+const datapoints2 = jsonfile2.jsonarray.map(function (e) {
     return e.temp;
- });
+});
 
 var finalObjLabels = labels.concat(labels2);
 console.log(labels);
@@ -22,14 +22,6 @@ var finalObjTemp = datapoints.concat(datapoints2);
 console.log(datapoints);
 console.log(datapoints2);
 console.log(finalObjTemp);
-
- labels.forEach(element => {
-    if(element.includes('x')){
-        console.log('x found: '+element);
-    } else {
-        console.log('x NOT found: '+element);
-    }
- });
 
 // Config - used to change how the chart behaves
 const dataObj = {
@@ -52,7 +44,7 @@ const dataObj = {
 
 var chartArea = document.getElementById('myChart');
 const chartContent = new Chart(chartArea, {
-    type: "line", 
+    type: "line",
     data: dataObj,
     options: {
         interaction: {
@@ -60,15 +52,6 @@ const chartContent = new Chart(chartArea, {
             // mode only applies when the mouse position intersects an item on the chart.
             intersect: false,
             mode: 'nearest'
-        },
-        onClick: (e) => {
-            const canvasPosition = Chart.helpers.getRelativePosition(e, chartArea);
-
-            // Substitute the appropriate scale IDs
-            const dataX = chartContent.scales.x.getValueForPixel(canvasPosition.x);
-            const dataY = chartContent.scales.y.getValueForPixel(canvasPosition.y);
-
-            alert("dataX: "+dataX+", dataY: "+dataY);
         }
     }
 });
