@@ -14,14 +14,7 @@ const datapoints2 = jsonfile2.jsonarray.map(function (e) {
 });
 
 var finalObjLabels = labels.concat(labels2);
-console.log(labels);
-console.log(labels2);
-console.log(finalObjLabels);
-
 var finalObjTemp = datapoints.concat(datapoints2);
-console.log(datapoints);
-console.log(datapoints2);
-console.log(finalObjTemp);
 
 // Config - used to change how the chart behaves
 const dataObj = {
