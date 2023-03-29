@@ -18,6 +18,7 @@
     var seed = 1;
     var chance;
     var checkChance;
+    const measurements = [];
 
     // setIntervalX is used as setInterval is predefined.
     function setIntervalX(callback, delay, repetitions) {
@@ -41,6 +42,7 @@
     // Print current time to console.
     function myFunction(s) {
         console.log("Current time: " + new Date().toLocaleTimeString());
+        var clock = new Date().toLocaleTimeString();
 
         chance = new Chance(s);
         chance = chance.integer({ min: 1, max: 3 });
@@ -51,5 +53,15 @@
         checkChance = new Chance(s);
         checkChance = checkChance.integer({ min: 1, max: 3 });
         console.log(checkChance+" <-- check");
+
+        measurements.push({ timestamp: clock, chancevalue: chance });
     }
+
+    // Download generated data
+    var downloadBtn = document.getElementById('saveData');
+    downloadBtn.setAttribute("download", "measurements.json");
+    downloadBtn.onclick = function() {
+        var measurementData = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(measurements,undefined,2));
+        downloadBtn.setAttribute("href", measurementData);
+    };
 })();
