@@ -8,24 +8,16 @@ const datapoints1 = jsonfile1.jsonarray.map(function(e) {
     return e.temp;
  });
 
- labels.forEach(element => {
-    if(element.includes('x')){
-        console.log('x found: '+element);
-    } else {
-        console.log('x NOT found: '+element);
-    }
- });
-
 var options = {
     chart: {
         type: 'line'
     },
     series: [
         {
-            name: 'Values',
+            name: 'FirstSeries',
             data: datapoints1
         },{
-            name: 'Values',
+            name: 'SecondSeries',
             data: datapoints2
         }
     ],
@@ -36,3 +28,18 @@ var options = {
 
 var chart = new ApexCharts(document.querySelector("#myChart"), options);
 chart.render();
+
+
+let button1 = document.getElementById("btnShow1");
+button1.addEventListener('click', function () {
+    updateTheData('FirstSeries');
+});
+
+let button2 = document.getElementById("btnShow2");
+button2.addEventListener('click', function () {
+    updateTheData('SecondSeries');
+});
+
+function updateTheData(data){
+    chart.toggleSeries(data);
+}
