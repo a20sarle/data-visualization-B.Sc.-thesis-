@@ -53,12 +53,18 @@
 
         seed = s;
 
+// S T A R T    M E A S U R I N G
+        var start = performance.now();
         document.getElementById('btnShow'+chance).click();
-        console.log("Generated!");
+        var end = performance.now();
+// E N D    M E A S U R I N G
+
+        var renderTime = (end - start).toFixed(2);
+        console.log(chance+", render: "+renderTime);
+
+        measurements.push({ btn: chance, render: renderTime });
 
         prevChance = chance;
-
-        measurements.push({ timestamp: clock, chancevalue: chance });
     }
 
     // Download generated data
