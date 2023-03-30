@@ -16,8 +16,8 @@
 
     // Your code here...
     var seed = 1;
+    var prevChance = 3;
     var chance;
-    var checkChance;
     const measurements = [];
 
     // setIntervalX is used as setInterval is predefined.
@@ -36,23 +36,27 @@
     // 2000 = delay, 5 = repetitions
     setIntervalX(function(){
         myFunction(seed);
-        seed++;
     }, 2000, 5);
 
     // Print current time to console.
     function myFunction(s) {
-        console.log("Current time: " + new Date().toLocaleTimeString());
         var clock = new Date().toLocaleTimeString();
 
-        chance = new Chance(s);
-        chance = chance.integer({ min: 1, max: 3 });
-        console.log(chance);
+        do {
+            chance = new Chance(s);
+            chance = chance.integer({ min: 1, max: 3 });
+            s++;
+        } 
+        // Ensure that the same btn is not pressed twice in a row,
+        // as the only measurements of interest is when the chart is updated.
+        while(prevChance == chance);
 
-        // Checks that seed (s) works, meaning that `chance`
-        // and `heckChance` return the same values.
-        checkChance = new Chance(s);
-        checkChance = checkChance.integer({ min: 1, max: 3 });
-        console.log(checkChance+" <-- check");
+        seed = s;
+
+        document.getElementById('btnShow'+chance).click();
+        console.log("Generated!");
+
+        prevChance = chance;
 
         measurements.push({ timestamp: clock, chancevalue: chance });
     }
