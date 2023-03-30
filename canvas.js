@@ -13,16 +13,17 @@ const datapoints2 = jsonfile2.jsonarray.map(function (e) {
     return e.temp;
 });
 
-var finalObjLabels = labels.concat(labels2);
-var finalObjTemp = datapoints.concat(datapoints2);
-
 // Config - used to change how the chart behaves
 const dataObj = {
-    labels: finalObjLabels,
+    labels: labels,
     datasets: [
         {
-            label: "Values",
-            data: finalObjTemp
+            label: 'FirstSeries',
+            data: datapoints
+        },
+        {
+            label: 'FirstSeries',
+            data: datapoints2
         }
     ]
 }
@@ -40,30 +41,3 @@ const chartContent = new Chart(chartArea, {
         }
     }
 });
-
-let button1 = document.getElementById("btnShow1");
-button1.addEventListener('click', function () {
-    updateTheData(datapoints, labels);
-});
-
-let button2 = document.getElementById("btnShow2");
-button2.addEventListener('click', function () {
-    updateTheData(datapoints2, labels2);
-});
-
-let buttonA = document.getElementById("btnShow3");
-buttonA.addEventListener('click', function () {
-    updateTheData(finalObjTemp, finalObjLabels);
-});
-
-// Function changing -0.75 to 3 in jsonfile1.
-// -0.75 is the first temp value in the first object in JSON array.
-//      * chartContent  = the chart
-//      * data          = data (in 'data: dataObj')
-//      * datasets[0]   = the first object of datasets in const 'dataObj'
-//      * data[0]       = first index of JSON array 'datapoints' holding temperatures
-function updateTheData(temp, label) {
-    chartContent.data.datasets[0].data = temp;
-    chartContent.data.labels = label;
-    chartContent.update();
-}
