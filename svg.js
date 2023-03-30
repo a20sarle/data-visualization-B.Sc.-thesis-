@@ -28,18 +28,3 @@ var options = {
 
 var chart = new ApexCharts(document.querySelector("#myChart"), options);
 chart.render();
-
-
-let button1 = document.getElementById("btnShow1");
-button1.addEventListener('click', function () {
-    updateTheData('FirstSeries');
-});
-
-let button2 = document.getElementById("btnShow2");
-button2.addEventListener('click', function () {
-    updateTheData('SecondSeries');
-});
-
-function updateTheData(data){
-    chart.toggleSeries(data);
-}
