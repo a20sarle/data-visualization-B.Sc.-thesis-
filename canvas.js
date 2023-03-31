@@ -22,13 +22,14 @@ const dataObj = {
             data: datapoints
         },
         {
-            label: 'FirstSeries',
+            label: 'SecondSeries',
             data: datapoints2
         }
     ]
 }
 
 var chartArea = document.getElementById('myChart');
+
 const chartContent = new Chart(chartArea, {
     type: "line",
     data: dataObj,
@@ -41,3 +42,26 @@ const chartContent = new Chart(chartArea, {
         }
     }
 });
+
+function clickLabel() {
+    document
+        .getElementById('myChart')
+        .dispatchEvent(
+            new MouseEvent(
+                "click", // or "mousedown" if the canvas listens for such an event
+                {
+                    clientX: 26 + +298,
+                    clientY: -127 + +225,
+                    // bubbles: true // "bubbling means that you will also receive an event when any child receives the event."
+                }
+            )
+        );
+}
+
+const getCoordinates = (event) => {
+    const container = chartArea.getBoundingClientRect();
+    const x = (event.clientX - container.left) - container.width / 2;
+    const y = (event.clientY - container.top) - container.height / 2;
+    console.log(`${x}, ${y}`);
+};
+chartArea.addEventListener('click', getCoordinates);
