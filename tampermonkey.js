@@ -15,70 +15,66 @@
     'use strict';
 
     // Your code here...
-    var repeated = window.localStorage.getItem("repeated");
-    if(repeated === null)
-    {
-        window.localStorage.setItem("repeated", 0);
-        window.localStorage.setItem("seed", 1);
-        window.localStorage.setItem("chance", 0);
-        window.localStorage.setItem("prevChance", 3);
-        window.localStorage.setItem("measurements", "");
-     }
+    const measurements = [];
+    var times = 0;
 
-     repeated = window.localStorage.getItem("repeated");
-     var seed = window.localStorage.getItem("seed");
-     var chance = window.localStorage.getItem("chance");
-     var prevChance = window.localStorage.getItem("prevChance");
-     var measurements = window.localStorage.getItem("measurements");
-
-     repeated++;
-
-    if(repeated < 6){
-        myFunction(seed);
-        localStorage.setItem('repeated', repeated);
-        location.reload();
+    // setIntervalX is used as setInterval is predefined.
+    function setIntervalX(callback, delay, repetitions) {
+        let x = 0;
+        let intervalID = setInterval(function () {
+            callback();
+            if (++x === repetitions) {
+                // Used to stop call myFunction.
+                clearInterval(intervalID);
+            }
+        }, delay);
     }
 
+    // Call myFunction every 2 sec but only 10 times.
+    // 2000 = delay, 5 = repetitions
+    setIntervalX(function () {
+        myFunction();
+    }, 2000, 10);
+
     // Print current time to console.
-    function myFunction(s) {
-        var clock = new Date().toLocaleTimeString();
+    function myFunction() {
+        let x = 26 + 298;
 
-        do {
-            chance = new Chance(s);
-            chance = chance.integer({ min: 1, max: 3 });
-            s++;
-        } 
-        // Ensure that the same btn is not pressed twice in a row,
-        // as the only measurements of interest is when the chart is updated.
-        while(prevChance == chance);
+        if (times % 2 === 0) { x = 324 - 200; }
 
-        seed = s;
+        times++;
 
-// S T A R T    M E A S U R I N G
-        var start = performance.now();
-        document.getElementById('btnShow'+chance).click();
-        var end = performance.now();
-// E N D    M E A S U R I N G
+        console.log("x: " + x);
+        clickLabel(x);
 
-        var renderTime = (end - start).toFixed(2);
-        console.log(chance+", render: "+renderTime);
+        let start = window.localStorage.getItem("start");
+        let end = window.localStorage.getItem("end");
 
-        measurements += '{"btn": "'+chance+'","render": "'+renderTime+'"},';
+        console.log((end - start).toFixed(2));
 
-        prevChance = chance;
+        measurements.push({ click: x, time: (end - start).toFixed(2) });
+    }
 
-        window.localStorage.setItem("repeated", repeated);
-        window.localStorage.setItem("seed", seed);
-        window.localStorage.setItem("chance", chance);
-        window.localStorage.setItem("prevChance", prevChance);
-        window.localStorage.setItem("measurements", measurements);
+    function clickLabel(x) {
+        document
+            .getElementById('myChart')
+            .dispatchEvent(
+                new MouseEvent(
+                    "click", // or "mousedown" if the canvas listens for such an event
+                    {
+                        clientX: x,
+                        clientY: 98,
+                        // bubbles: true // "bubbling means that you will also receive an event when any child receives the event."
+                    }
+                )
+            );
     }
 
     // Download generated data
     var downloadBtn = document.getElementById('saveData');
     downloadBtn.setAttribute("download", "measurements.json");
-    downloadBtn.onclick = function() {
-        var measurementData = "data:text/json;charset=utf-8," + encodeURIComponent("["+measurements.slice(0, -1)+"]",undefined,2);
+    downloadBtn.onclick = function () {
+        var measurementData = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(measurements, undefined, 2));
         downloadBtn.setAttribute("href", measurementData);
     };
 })();

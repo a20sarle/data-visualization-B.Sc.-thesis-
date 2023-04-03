@@ -41,32 +41,17 @@ const chartContent = new Chart(chartArea, {
             mode: 'nearest'
         },
         animation: {
+            duration: 1,
+            onProgress: function(animation) {
+                for(i = 0; i < 1; i++){
+                    window.localStorage.setItem("start", performance.now());
+                    //console.log('Render in progress!');
+                }                
+            },
             onComplete: function() {
-                console.log('Rendered!');
+                window.localStorage.setItem("end", performance.now());
+                //console.log('Render complete!');
             }
         }
     }
 });
-
-function clickLabel() {
-    document
-        .getElementById('myChart')
-        .dispatchEvent(
-            new MouseEvent(
-                "click", // or "mousedown" if the canvas listens for such an event
-                {
-                    clientX: 26 + +298,
-                    clientY: -127 + +225,
-                    // bubbles: true // "bubbling means that you will also receive an event when any child receives the event."
-                }
-            )
-        );
-}
-
-const getCoordinates = (event) => {
-    const container = chartArea.getBoundingClientRect();
-    const x = (event.clientX - container.left) - container.width / 2;
-    const y = (event.clientY - container.top) - container.height / 2;
-    console.log(`${x}, ${y}`);
-};
-chartArea.addEventListener('click', getCoordinates);
