@@ -39,6 +39,11 @@ const chartContent = new Chart(chartArea, {
             // mode only applies when the mouse position intersects an item on the chart.
             intersect: false,
             mode: 'nearest'
+        },
+        animation: {
+            onComplete: function() {
+                console.log('Rendered!');
+            }
         }
     }
 });
