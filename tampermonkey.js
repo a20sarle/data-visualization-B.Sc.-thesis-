@@ -16,7 +16,7 @@
 
     // Your code here...
     const measurements = [];
-    var times = 0;
+    var seed = 0;
 
     // setIntervalX is used as setInterval is predefined.
     function setIntervalX(callback, delay, repetitions) {
@@ -40,11 +40,14 @@
     function myFunction() {
         let x = 26 + 298;
 
-        if (times % 2 === 0) { x = 324 - 200; }
+        var chance = new Chance(seed);
+        chance = chance.natural({min: 1, max: 20});
 
-        times++;
+        if (chance % 2 === 0) { x = 324 - 200; }
 
-        console.log("x: " + x);
+        seed++;
+
+        console.log("chance:"+chance+", x: " + x);
         clickLabel(x);
 
         let start = window.localStorage.getItem("start");
