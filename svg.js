@@ -10,7 +10,15 @@ const datapoints1 = jsonfile1.jsonarray.map(function(e) {
 
 var options = {
     chart: {
-        type: 'line'
+        type: 'line',
+        events: {
+            updated: function() {
+                console.log("updated");
+            },
+            animationEnd: function() {
+                console.log("animationEnd");
+            }
+        }
     },
     series: [
         {
