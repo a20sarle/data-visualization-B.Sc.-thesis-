@@ -1,7 +1,7 @@
 const labels = jsonfile1.jsonarray.map(function(e) {
     return e.label;
  });
-const datapoints1 = jsonfile1.jsonarray.map(function(e) {
+const datapoints = jsonfile1.jsonarray.map(function(e) {
     return e.temp;
  });
  const datapoints2 = jsonfile2.jsonarray.map(function(e) {
@@ -13,17 +13,19 @@ var options = {
         type: 'line',
         events: {
             updated: function() {
-                console.log("updated");
+                console.log('animation started');
+                window.localStorage.setItem("start", performance.now());
             },
             animationEnd: function() {
-                console.log("animationEnd");
+                window.localStorage.setItem("end", performance.now());
+                console.log('animation finished');
             }
         }
     },
     series: [
         {
             name: 'FirstSeries',
-            data: datapoints1
+            data: datapoints
         },{
             name: 'SecondSeries',
             data: datapoints2
