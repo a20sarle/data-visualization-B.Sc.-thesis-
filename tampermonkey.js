@@ -55,7 +55,7 @@
 
         console.log((end - start).toFixed(2));
 
-        measurements.push({ click: x, time: (end - start).toFixed(2) });
+        measurements.push({ click: x, start: start, end: end, time: (end - start).toFixed(2) });
     }
 
     function clickLabel(x) {
