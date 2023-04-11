@@ -4,9 +4,12 @@ const labels = jsonfile1.jsonarray.map(function(e) {
 const datapoints = jsonfile1.jsonarray.map(function(e) {
     return e.temp;
  });
- const datapoints2 = jsonfile2.jsonarray.map(function(e) {
+const datapoints2 = jsonfile2.jsonarray.map(function(e) {
     return e.temp;
- });
+});
+const datapoints3 = jsonfile3.jsonarray.map(function (e) {
+    return e.temp;
+});
 
 var options = {
     chart: {
@@ -29,6 +32,9 @@ var options = {
         },{
             name: 'SecondSeries',
             data: datapoints2
+        },{
+            name: 'ThirdSeries',
+            data: datapoints3
         }
     ],
     xaxis: {

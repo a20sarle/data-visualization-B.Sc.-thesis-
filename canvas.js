@@ -7,6 +7,9 @@ const datapoints = jsonfile1.jsonarray.map(function (e) {
 const datapoints2 = jsonfile2.jsonarray.map(function (e) {
     return e.temp;
 });
+const datapoints3 = jsonfile3.jsonarray.map(function (e) {
+    return e.temp;
+});
 
 var options = {
     type: "line",
@@ -20,6 +23,10 @@ var options = {
             {
                 label: 'SecondSeries',
                 data: datapoints2
+            },
+            {
+                label: 'ThirdSeries',
+                data: datapoints3
             }
         ]
     },
