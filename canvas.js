@@ -31,15 +31,23 @@ var options = {
     options: {
         animation: {
             duration: 1,
-            onProgress: function(animation) {
-                for(i = 0; i < 1; i++){
-                    window.localStorage.setItem("start", performance.now());
-                    //console.log('Render in progress!');
-                }                
+            onProgress: function(context) {
+                if (context.initial) {
+                    console.log('Initial animation started');
+                } else {
+                    for(i = 0; i < 1; i++){
+                        console.log('animation started');
+                        window.localStorage.setItem("start", performance.now());
+                    }
+                }              
             },
-            onComplete: function() {
-                window.localStorage.setItem("end", performance.now());
-                //console.log('Render complete!');
+            onComplete: function(context) {
+                if (context.initial) {
+                    console.log('Initial animation finished');
+                } else {
+                    window.localStorage.setItem("end", performance.now());
+                    console.log('animation finished');
+                }
             }
         }
     }
