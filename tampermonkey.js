@@ -39,7 +39,7 @@
 
     // Print current time to console.
     function myFunction() {
-        // let x = 26 + 298;
+        // let x = 26 + 190;
         let x = 1;
 
         var chance = new Chance(seed);
