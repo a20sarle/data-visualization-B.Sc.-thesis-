@@ -80,7 +80,8 @@
 
     // Download generated data
     var downloadBtn = document.getElementById('saveData');
-    downloadBtn.setAttribute("download", "measurements.json");
+    // downloadBtn.setAttribute("download", "canvas-pilot-measurements.json");
+    downloadBtn.setAttribute("download", "svg-pilot-measurements.json");
     downloadBtn.onclick = function () {
         var measurementData = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(measurements, undefined, 2));
         downloadBtn.setAttribute("href", measurementData);
