@@ -38,12 +38,14 @@
 
     // Print current time to console.
     function myFunction() {
-        let x = 26 + 298;
+        // let x = 26 + 298;
+        let x = 1;
 
         var chance = new Chance(seed);
         chance = chance.natural({min: 1, max: 20});
 
-        if (chance % 2 === 0) { x = 324 - 200; }
+        // if (chance % 2 === 0) { x = 324 - 200; }
+        if (chance % 2 === 0) { x = 2; }
 
         seed++;
 
@@ -59,18 +61,21 @@
     }
 
     function clickLabel(x) {
-        document
-            .getElementById('myChart')
-            .dispatchEvent(
-                new MouseEvent(
-                    "click", // or "mousedown" if the canvas listens for such an event
-                    {
-                        clientX: x,
-                        clientY: 98,
-                        // bubbles: true // "bubbling means that you will also receive an event when any child receives the event."
-                    }
-                )
-            );
+        let legend = document.querySelector('div.apexcharts-legend div:nth-child('+ x +') span:nth-child('+ x +')');
+        legend.click();
+        
+        // document
+        //     .getElementById('myChart')
+        //     .dispatchEvent(
+        //         new MouseEvent(
+        //             "click", // or "mousedown" if the canvas listens for such an event
+        //             {
+        //                 clientX: x,
+        //                 clientY: 98,
+        //                 // bubbles: true // "bubbling means that you will also receive an event when any child receives the event."
+        //             }
+        //         )
+        //     );
     }
 
     // Download generated data
