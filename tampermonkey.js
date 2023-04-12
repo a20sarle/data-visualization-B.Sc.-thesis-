@@ -25,6 +25,7 @@
             callback();
             if (++x === repetitions) {
                 // Used to stop call myFunction.
+                console.log('Complete!');
                 clearInterval(intervalID);
             }
         }, delay);
