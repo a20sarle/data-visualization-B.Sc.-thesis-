@@ -1,9 +1,6 @@
 const jsonfile1 = {
     "jsonarray": 
     [{
-        "label": "23-Jan",
-        "temp": "2"
-    },{
         "label": "x23-Jan",
         "temp": "-0.7504562"
     },
