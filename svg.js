@@ -14,6 +14,9 @@ const datapoints3 = jsonfile3.jsonarray.map(function (e) {
 var options = {
     chart: {
         type: 'line',
+        animations: {
+            speed: 1,
+        },
         events: {
             updated: function() {
                 console.log('animation started');
@@ -22,6 +25,10 @@ var options = {
             animationEnd: function() {
                 window.localStorage.setItem("end", performance.now());
                 console.log('animation finished');
+
+                // let start = window.localStorage.getItem("start");
+                // let end = window.localStorage.getItem("end");
+                // console.log((end - start).toFixed(2));
             }
         }
     },

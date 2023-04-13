@@ -42,6 +42,10 @@ var options = {
             onComplete: function() {
                 window.localStorage.setItem("end", performance.now());
                 console.log('animation finished');
+
+                // let start = window.localStorage.getItem("start");
+                // let end = window.localStorage.getItem("end");
+                // console.log((end - start).toFixed(2));
             }
         }
     }
