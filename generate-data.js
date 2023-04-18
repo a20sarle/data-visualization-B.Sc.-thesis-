@@ -27,15 +27,24 @@ for (let i = 0; i < 24; i++) {
     var date = getLabel(i);
     var temperature = getTemperature(-1.0448954, 1.2235883);
 
-    anomaliesFinalArray.push({ label: date, temp: temperature });
+    anomaliesFinalArray.push({ "Time": date, "Anomaly (deg C)": temperature });
 }
 
 console.log(anomaliesFinalArray);
+
+let arrGenerated = JSON.stringify(anomaliesFinalArray);
+
+console.log(arrGenerated);
+
+let removedLastQuotation = arrGenerated.replace(/[0-9](")/gi, '');
+let arrFinal = removedLastQuotation.replace(/(C.":")/gi, 'C)":');
+
+console.log(arrFinal);
 
 // Download generated data
 var downloadBtn = document.getElementById('generateData');
 downloadBtn.setAttribute("download", "temperatures.json");
 downloadBtn.onclick = function() {
-    var temperatureData = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(anomaliesFinalArray,undefined,2));
+    var temperatureData = "data:text/json;charset=utf-8," + encodeURIComponent(arrFinal,undefined,2);
     downloadBtn.setAttribute("href", temperatureData);
 };
