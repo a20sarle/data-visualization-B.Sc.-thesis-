@@ -27,7 +27,7 @@ for (let i = 0; i < 24; i++) {
     var date = getLabel(i);
     var temperature = getTemperature(-1.0448954, 1.2235883);
 
-    anomaliesFinalArray.push({ "Time": date, "Anomaly (deg C)": temperature });
+    anomaliesFinalArray.push({ "Time": date, "Anomaly": temperature });
 }
 
 console.log(anomaliesFinalArray);
@@ -48,3 +48,17 @@ downloadBtn.onclick = function() {
     var temperatureData = "data:text/json;charset=utf-8," + encodeURIComponent(arrFinal,undefined,2);
     downloadBtn.setAttribute("href", temperatureData);
 };
+
+// ***** HadCRUT5 - Formatting the label from "Anomaly (deg C)" to "Anomaly" *****
+let strHadCRUT5 = JSON.stringify(HadCRUT5.jsonarray);
+console.log(strHadCRUT5);
+let formattedHadCRUT5 = strHadCRUT5.replace(/\s+[^C]*.[^C]/gi, '');
+console.log(formattedHadCRUT5);
+
+// Download generated data
+var changeLabel = document.getElementById('changeLabel');
+changeLabel.setAttribute("download", "HadCRUT5.json");
+changeLabel.onclick = function() {
+    var finalHadCRUT5 = "data:text/json;charset=utf-8," + encodeURIComponent(formattedHadCRUT5,undefined,2);
+    changeLabel.setAttribute("href", finalHadCRUT5);
+}
