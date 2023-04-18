@@ -1,99 +1,51 @@
 const jsonfile1 = {
     "jsonarray": 
     [{
-        "label": "x23-Jan",
-        "temp": "-0.7504562"
+        "Time": "1850-01",
+        "Anomaly": -0.67456436
     },
     {
-        "label": "x23-Feb",
-        "temp": "0.7986458"
+        "Time": "1850-02",
+        "Anomaly": -0.333416
     },
     {
-        "label": "x23-Mar",
-        "temp": "-0.3363440"
+        "Time": "1850-03",
+        "Anomaly": -0.59132266
     },
     {
-        "label": "x23-Apr",
-        "temp": "0.3564235"
+        "Time": "1850-04",
+        "Anomaly": -0.58872116
     },
     {
-        "label": "x23-May",
-        "temp": "-0.0335464"
+        "Time": "1850-05",
+        "Anomaly": -0.5081851
     },
     {
-        "label": "x23-Jun",
-        "temp": "-0.3092201"
+        "Time": "1850-06",
+        "Anomaly": -0.34424013
     },
     {
-        "label": "x23-Jul",
-        "temp": "-0.9677990"
+        "Time": "1850-07",
+        "Anomaly": -0.15979019
     },
     {
-        "label": "x23-Aug",
-        "temp": "-1.0353791"
+        "Time": "1850-08",
+        "Anomaly": -0.2076543
     },
     {
-        "label": "x23-Sep",
-        "temp": "-0.3264144"
+        "Time": "1850-09",
+        "Anomaly": -0.3847069
     },
     {
-        "label": "x23-Oct",
-        "temp": "0.0663818"
+        "Time": "1850-10",
+        "Anomaly": -0.53312653
     },
     {
-        "label": "x23-Nov",
-        "temp": "0.2639356"
+        "Time": "1850-11",
+        "Anomaly": -0.2825075
     },
     {
-        "label": "x23-Dec",
-        "temp": "0.8554578"
-    },
-    {
-        "label": "x24-Jan",
-        "temp": "0.6824531"
-    },
-    {
-        "label": "x24-Feb",
-        "temp": "-0.6041756"
-    },
-    {
-        "label": "x24-Mar",
-        "temp": "0.5016222"
-    },
-    {
-        "label": "x24-Apr",
-        "temp": "0.6409853"
-    },
-    {
-        "label": "x24-May",
-        "temp": "1.1878387"
-    },
-    {
-        "label": "x24-Jun",
-        "temp": "0.7001389"
-    },
-    {
-        "label": "x24-Jul",
-        "temp": "0.1492865"
-    },
-    {
-        "label": "x24-Aug",
-        "temp": "-0.2745481"
-    },
-    {
-        "label": "x24-Sep",
-        "temp": "-0.2301370"
-    },
-    {
-        "label": "x24-Oct",
-        "temp": "0.2913690"
-    },
-    {
-        "label": "x24-Nov",
-        "temp": "0.1783383"
-    },
-    {
-        "label": "x24-Dec",
-        "temp": "1.0296540"
+        "Time": "1850-12",
+        "Anomaly": -0.40367043
     }]
 };

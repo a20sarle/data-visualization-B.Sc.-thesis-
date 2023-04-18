@@ -1,99 +1,51 @@
 const jsonfile3 = {
     "jsonarray":
     [{
-        "label": "x23-Jan",
-        "temp": 0
+        "Time": "x23-Jan",
+        "Anomaly": 0
     },
     {
-        "label": "x23-Feb",
-        "temp": 0
+        "Time": "x23-Feb",
+        "Anomaly": 0
     },
     {
-        "label": "x23-Mar",
-        "temp": 0
+        "Time": "x23-Mar",
+        "Anomaly": 0
     },
     {
-        "label": "x23-Apr",
-        "temp": 0
+        "Time": "x23-Apr",
+        "Anomaly": 0
     },
     {
-        "label": "x23-May",
-        "temp": 0
+        "Time": "x23-May",
+        "Anomaly": 0
     },
     {
-        "label": "x23-Jun",
-        "temp": 0
+        "Time": "x23-Jun",
+        "Anomaly": 0
     },
     {
-        "label": "x23-Jul",
-        "temp": 0
+        "Time": "x23-Jul",
+        "Anomaly": 0
     },
     {
-        "label": "x23-Aug",
-        "temp": 0
+        "Time": "x23-Aug",
+        "Anomaly": 0
     },
     {
-        "label": "x23-Sep",
-        "temp": 0
+        "Time": "x23-Sep",
+        "Anomaly": 0
     },
     {
-        "label": "x23-Oct",
-        "temp": 0
+        "Time": "x23-Oct",
+        "Anomaly": 0
     },
     {
-        "label": "x23-Nov",
-        "temp": 0
+        "Time": "x23-Nov",
+        "Anomaly": 0
     },
     {
-        "label": "x23-Dec",
-        "temp": 0
-    },
-    {
-        "label": "x24-Jan",
-        "temp": 0
-    },
-    {
-        "label": "x24-Feb",
-        "temp": 0
-    },
-    {
-        "label": "x24-Mar",
-        "temp": 0
-    },
-    {
-        "label": "x24-Apr",
-        "temp": 0
-    },
-    {
-        "label": "x24-May",
-        "temp": 0
-    },
-    {
-        "label": "x24-Jun",
-        "temp": 0
-    },
-    {
-        "label": "x24-Jul",
-        "temp": 0
-    },
-    {
-        "label": "x24-Aug",
-        "temp": 0
-    },
-    {
-        "label": "x24-Sep",
-        "temp": 0
-    },
-    {
-        "label": "x24-Oct",
-        "temp": 0
-    },
-    {
-        "label": "x24-Nov",
-        "temp": 0
-    },
-    {
-        "label": "x24-Dec",
-        "temp": 0
+        "Time": "x23-Dec",
+        "Anomaly": 0
     }]
 };

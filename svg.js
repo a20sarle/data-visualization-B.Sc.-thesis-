@@ -1,14 +1,14 @@
-const labels = jsonfile1.jsonarray.map(function(e) {
-    return e.label;
- });
+// const labels = jsonfile1.jsonarray.map(function(e) {
+//     return e.label;
+//  });
 const datapoints = jsonfile1.jsonarray.map(function(e) {
-    return e.temp;
+    return e.Anomaly;
  });
 const datapoints2 = jsonfile2.jsonarray.map(function(e) {
-    return e.temp;
+    return e.Anomaly;
 });
 const datapoints3 = jsonfile3.jsonarray.map(function (e) {
-    return e.temp;
+    return e.Anomaly;
 });
 
 var options = {
@@ -45,7 +45,7 @@ var options = {
         }
     ],
     xaxis: {
-        categories: labels
+        categories: ["Jan","Feb","Mar","Apr","Maj","Jun","Jul","Aug","Sep","Okt","Nov","Dec"]
     }
 }
 
