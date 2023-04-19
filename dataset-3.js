@@ -43,5 +43,9 @@ const jsonfile3 = {
     {
         "Time": "x23-Nov",
         "Anomaly": 0
+    },
+    {
+        "Time": "x23-Dec",
+        "Anomaly": 0
     }]
 };

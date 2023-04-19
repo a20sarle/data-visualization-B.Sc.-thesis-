@@ -11,6 +11,13 @@ const datapoints3 = jsonfile3.jsonarray.map(function (e) {
     return e.Anomaly;
 });
 
+const datapoints4 = jsonfile4.jsonarray.map(function(e) {
+    return e.Anomaly;
+});
+const datapoints5 = jsonfile5.jsonarray.map(function (e) {
+    return e.Anomaly;
+});
+
 var options = {
     type: "line",
     data: {
@@ -26,6 +33,14 @@ var options = {
             },
             {
                 label: 'extra1',
+                data: datapoints4
+            },
+            {
+                label: 'extra2',
+                data: datapoints5
+            },
+            {
+                label: 'ThirdSeries',
                 data: datapoints3
             }
         ]
