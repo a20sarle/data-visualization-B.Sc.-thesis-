@@ -1,15 +1,19 @@
-// const labels = jsonfile1.jsonarray.map(function(e) {
-//     return e.label;
-//  });
-const datapoints = jsonfile1.jsonarray.map(function(e) {
-    return e.Anomaly;
- });
-const datapoints2 = jsonfile2.jsonarray.map(function(e) {
+const allLabels = HadCRUT5.jsonarray.map(function(e) {
+    return e.Time;
+});
+const allTemp = HadCRUT5.jsonarray.map(function(e) {
     return e.Anomaly;
 });
-const datapoints3 = jsonfile3.jsonarray.map(function (e) {
-    return e.Anomaly;
-});
+
+var labels = allLabels.slice(0,36);
+var datapoints = allTemp.slice(0,36);
+var datapoints2 = allTemp.slice(36,72);
+
+const lastDataserie = [];
+datapoints.forEach(getValues);
+function getValues(){
+    lastDataserie.push(0);
+}
 
 var options = {
     chart: {
@@ -36,16 +40,18 @@ var options = {
         {
             name: 'FirstSeries',
             data: datapoints
-        },{
+        },
+        {
             name: 'SecondSeries',
             data: datapoints2
-        },{
+        },
+        {
             name: 'ThirdSeries',
-            data: datapoints3
+            data: lastDataserie
         }
     ],
     xaxis: {
-        categories: ["Jan","Feb","Mar","Apr","Maj","Jun","Jul","Aug","Sep","Okt","Nov","Dec"]
+        categories: labels
     }
 }
 
