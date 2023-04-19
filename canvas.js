@@ -14,7 +14,7 @@ const datapoints3 = jsonfile3.jsonarray.map(function (e) {
 var options = {
     type: "line",
     data: {
-        labels: ["Jan","Feb","Mar","Apr","Maj","Jun","Jul","Aug","Sep","Okt","Nov","Dec"],
+        labels: ["Jan","Feb","Mar","Apr","Maj","Jun","Jul","Aug","Sep","Okt","Nov","Dec","Jan","Feb","Mar","Apr","Maj","Jun","Jul","Aug","Sep","Okt","Nov","Dec"],
         datasets: [
             {
                 label: 'FirstSeries',
