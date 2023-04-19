@@ -43,57 +43,5 @@ const jsonfile3 = {
     {
         "Time": "x23-Nov",
         "Anomaly": 0
-    },
-    {
-        "Time": "x23-Dec",
-        "Anomaly": 0
-    },
-    {
-        "Time": "x24-Jan",
-        "Anomaly": 0
-    },
-    {
-        "Time": "x24-Feb",
-        "Anomaly": 0
-    },
-    {
-        "Time": "x24-Mar",
-        "Anomaly": 0
-    },
-    {
-        "Time": "x24-Apr",
-        "Anomaly": 0
-    },
-    {
-        "Time": "x24-May",
-        "Anomaly": 0
-    },
-    {
-        "Time": "x24-Jun",
-        "Anomaly": 0
-    },
-    {
-        "Time": "x24-Jul",
-        "Anomaly": 0
-    },
-    {
-        "Time": "x24-Aug",
-        "Anomaly": 0
-    },
-    {
-        "Time": "x24-Sep",
-        "Anomaly": 0
-    },
-    {
-        "Time": "x24-Oct",
-        "Anomaly": 0
-    },
-    {
-        "Time": "x24-Nov",
-        "Anomaly": 0
-    },
-    {
-        "Time": "x24-Dec",
-        "Anomaly": 0
     }]
 };
