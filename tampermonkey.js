@@ -56,7 +56,7 @@
         let start = window.localStorage.getItem("start");
         let end = window.localStorage.getItem("end");
 
-        console.log((end - start).toFixed(2)+", from userscript");
+        console.log((end - start).toFixed(2));
 
         measurements.push({ click: x, start: start, end: end, time: (end - start).toFixed(2) });
     }
