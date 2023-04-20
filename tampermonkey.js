@@ -39,6 +39,7 @@
 
     // Print current time to console.
     function myFunction() {
+        let elapsed = 0;
         // let x = 26 + 190;
         let x = 1;
 
@@ -53,12 +54,11 @@
         console.log("chance:"+chance+", x: " + x);
         clickLabel(x);
 
-        let start = window.localStorage.getItem("start");
-        let end = window.localStorage.getItem("end");
+        elapsed = window.localStorage.getItem("elapsed");
 
         console.log((end - start).toFixed(2));
 
-        measurements.push({ click: x, start: start, end: end, time: (end - start).toFixed(2) });
+        measurements.push({ click: x, time: elapsed});
     }
 
     function clickLabel(x) {
