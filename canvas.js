@@ -38,10 +38,8 @@ var options = {
         animation: {
             duration: 1,
             onProgress: function() {
-                for(i = 0; i < 1; i++){
-                    console.log('animation started');
-                    window.localStorage.setItem("start", performance.now());
-                }              
+                console.log('animation started');
+                window.localStorage.setItem("start", performance.now());          
             },
             onComplete: function() {
                 window.localStorage.setItem("end", performance.now());
