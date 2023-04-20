@@ -6,7 +6,7 @@ const allTemp = HadCRUT5.jsonarray.map(function(e) {
 });
 
 // Change numYears to set how many years to use during measurements
-var numYears = 70;
+var numYears = 1; // << pilot baseline setting
 var numMonths = 12*numYears;
 var labels = allLabels.slice(0,numMonths);
 // Add groups of data below
