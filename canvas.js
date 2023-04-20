@@ -19,6 +19,9 @@ function getValues(){
     lastDataserie.push(0);
 }
 
+var startNow;
+var endNow;
+
 var options = {
     type: "line",
     data: {
@@ -42,16 +45,18 @@ var options = {
         animation: {
             duration: 1,
             onProgress: function() {
-                console.log('animation started');
-                window.localStorage.setItem("start", performance.now());          
+                // console.log('animation started');
+                startNow = performance.now();
+                window.localStorage.setItem("start", startNow); 
             },
             onComplete: function() {
-                window.localStorage.setItem("end", performance.now());
-                console.log('animation finished');
+                endNow = performance.now();
+                window.localStorage.setItem("end", endNow);
+                // console.log('animation finished');
 
                 // let start = window.localStorage.getItem("start");
                 // let end = window.localStorage.getItem("end");
-                // console.log((end - start).toFixed(2));
+                console.log((endNow - startNow).toFixed(2)+", from canvas.js");
             }
         }
     }
