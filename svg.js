@@ -5,9 +5,13 @@ const allTemp = HadCRUT5.jsonarray.map(function(e) {
     return e.Anomaly;
 });
 
-var labels = allLabels.slice(0,36);
-var datapoints = allTemp.slice(0,36);
-var datapoints2 = allTemp.slice(36,72);
+// Change numYears to set how many years to use during measurements
+var numYears = 40;
+var numMonths = 12*numYears;
+var labels = allLabels.slice(0,numMonths);
+// Add groups of data below
+var datapoints = allTemp.slice(0,numMonths);
+var datapoints2 = allTemp.slice(numMonths, numMonths*2);
 
 const lastDataserie = [];
 datapoints.forEach(getValues);
