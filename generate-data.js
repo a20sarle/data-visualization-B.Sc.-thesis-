@@ -21,14 +21,16 @@ function getLabel(i) {
     return "x"+year+"-"+month;
 }
 
-// Change i to adjust quantity of datapoints to generate
-for (let i = 0; i < 24; i++) {
+// Change numYears to adjust quantity of datapoints to generate
+numYears = 660;
+numMonths = 12*numYears;
+for (let i = 0; i < numMonths; i++) {
 
     var date = getLabel(i);
     var temperature = getTemperature(-1.0448954, 1.2235883);
 
     // replace 'temperature' with 0 for dataseries no.3
-    anomaliesFinalArray.push({ "Time": date, "Anomaly": 0 });
+    anomaliesFinalArray.push({ "Time": date, "Anomaly": temperature });
 }
 
 console.log(anomaliesFinalArray);

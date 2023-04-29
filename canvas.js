@@ -6,21 +6,23 @@ const allTemp = HadCRUT5.jsonarray.map(function(e) {
 });
 
 // Change numYears to set how many years to use during measurements
-var numYears = 30; // << new baseline
+var numYears = 15;
 var numDatapoints = 12*numYears;
 var labels = allLabels.slice(0,numDatapoints);
 // Add groups of data below
 var datapoints = allTemp.slice(0,numDatapoints);
 var datapoints2 = allTemp.slice(numDatapoints, numDatapoints*2);
 
-// console.log(labels);
+// Used for increasing lines by splitting datapoints
+var datapoints3 = allTemp.slice(numDatapoints*2, numDatapoints*2+180);
+var datapoints4 = allTemp.slice(numDatapoints*2*2, numDatapoints*2*2+180);
 
 var startNow;
 var endNow;
 var elapsed;
 
 const lastDataserie = [];
-datapoints.forEach(getValues);
+labels.forEach(getValues);
 function getValues(){
     lastDataserie.push(0);
 }
@@ -37,6 +39,14 @@ var options = {
             {
                 label: 'SecondSeries',
                 data: datapoints2
+            },
+            {
+                label: 'new',
+                data: datapoints3
+            },
+            {
+                label: 'new2',
+                data: datapoints4
             },
             {
                 label: 'ThirdSeries',
