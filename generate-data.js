@@ -39,29 +39,30 @@ let arrGenerated = JSON.stringify(anomaliesFinalArray);
 
 console.log(arrGenerated);
 
+// Used for formatting HadCRUT5.
 let removedLastQuotation = arrGenerated.replace(/[0-9](")/gi, '');
-let arrFinal = removedLastQuotation.replace(/(C.":")/gi, 'C)":');
-
-console.log(arrFinal);
+let removedCelsius = removedLastQuotation.replace(/(C.":")/gi, 'C)":');
+let generatedData = removedCelsius.replace(/(y":")/gi, 'y":');
+console.log(generatedData);
 
 // Download generated data
 var downloadBtn = document.getElementById('generateData');
 downloadBtn.setAttribute("download", "temperatures.json");
 downloadBtn.onclick = function() {
-    var temperatureData = "data:text/json;charset=utf-8," + encodeURIComponent(arrFinal,undefined,2);
+    var temperatureData = "data:text/json;charset=utf-8," + encodeURIComponent(generatedData,undefined,2);
     downloadBtn.setAttribute("href", temperatureData);
 };
 
 // ***** HadCRUT5 - Formatting the label from "Anomaly (deg C)" to "Anomaly" *****
-let strHadCRUT5 = JSON.stringify(HadCRUT5.jsonarray);
-console.log(strHadCRUT5);
-let formattedHadCRUT5 = strHadCRUT5.replace(/\s+[^C]*.[^C]/gi, '');
-console.log(formattedHadCRUT5);
+// let strHadCRUT5 = JSON.stringify(HadCRUT5.jsonarray);
+// console.log(strHadCRUT5);
+// let formattedHadCRUT5 = strHadCRUT5.replace(/\s+[^C]*.[^C]/gi, '');
+// console.log(formattedHadCRUT5);
 
 // Download generated data
-var changeLabel = document.getElementById('changeLabel');
-changeLabel.setAttribute("download", "HadCRUT5.json");
-changeLabel.onclick = function() {
-    var finalHadCRUT5 = "data:text/json;charset=utf-8," + encodeURIComponent(formattedHadCRUT5,undefined,2);
-    changeLabel.setAttribute("href", finalHadCRUT5);
-}
+// var changeLabel = document.getElementById('changeLabel');
+// changeLabel.setAttribute("download", "HadCRUT5.json");
+// changeLabel.onclick = function() {
+//     var finalHadCRUT5 = "data:text/json;charset=utf-8," + encodeURIComponent(formattedHadCRUT5,undefined,2);
+//     changeLabel.setAttribute("href", finalHadCRUT5);
+// }
