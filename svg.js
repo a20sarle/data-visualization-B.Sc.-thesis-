@@ -16,6 +16,10 @@ var datapoints2 = allTemp.slice(numDatapoints, numDatapoints*2);
 var datapoints3 = allTemp.slice(numDatapoints*2, numDatapoints*2+180);
 var datapoints4 = allTemp.slice(numDatapoints*2*2, numDatapoints*2*2+180);
 
+var startNow;
+var endNow;
+var elapsed;
+
 const lastDataserie = [];
 labels.forEach(getValues);
 function getValues(){
@@ -30,12 +34,15 @@ var options = {
         },
         events: {
             updated: function() {
-                console.log('animation started');
-                window.localStorage.setItem("start", performance.now());
+                startNow = performance.now(); 
             },
             animationEnd: function() {
-                window.localStorage.setItem("end", performance.now());
-                console.log('animation finished');
+                endNow = performance.now();
+
+                elapsed = (endNow - startNow).toFixed(2);
+                window.localStorage.setItem("elapsed", elapsed);
+
+                console.log(elapsed+'ms');
 
                 // let start = window.localStorage.getItem("start");
                 // let end = window.localStorage.getItem("end");

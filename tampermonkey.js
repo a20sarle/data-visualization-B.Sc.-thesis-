@@ -56,8 +56,6 @@
 
         elapsed = window.localStorage.getItem("elapsed");
 
-        console.log((end - start).toFixed(2));
-
         measurements.push({ click: x, time: elapsed});
     }
 
