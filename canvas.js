@@ -6,16 +6,25 @@ const allTemp = HadCRUT5.jsonarray.map(function(e) {
 });
 
 // Change numYears to set how many years to use during measurements
-var numYears = 86;
-var numDatapoints = 12*numYears;
-var labels = allLabels.slice(0,numDatapoints);
+var numYears = 25;
+var difference = 12*numYears;
+let startingNum = 0;
+function getValue(){
+    startingNum++;
+    let value = startingNum * difference;
+    return value;
+}
+
+var labels = allLabels.slice(startingNum,difference);
 // Add groups of data below
-var datapoints = allTemp.slice(0,numDatapoints);
-var datapoints2 = allTemp.slice(numDatapoints, numDatapoints*2);
+var datapoints = allTemp.slice(startingNum,difference);
+var datapoints2 = allTemp.slice(getValue(), getValue());
 
 // Used for increasing lines by splitting datapoints
-// var datapoints3 = allTemp.slice(numDatapoints*2, numDatapoints*2+180);
-// var datapoints4 = allTemp.slice(numDatapoints*2*2, numDatapoints*2*2+180);
+var datapoints3 = allTemp.slice(getValue(), getValue());
+var datapoints4 = allTemp.slice(getValue(), getValue());
+
+console.log(difference+" datap. * "+(startingNum/2+1)+" line = "+difference*(startingNum/2+1)+" datap. in tot.");
 
 var startNow;
 var endNow;
@@ -40,14 +49,14 @@ var options = {
                 label: 'SecondSeries',
                 data: datapoints2
             },
-            // {
-            //     label: 'new',
-            //     data: datapoints3
-            // },
-            // {
-            //     label: 'new2',
-            //     data: datapoints4
-            // },
+            {
+                label: 'new',
+                data: datapoints3
+            },
+            {
+                label: 'new2',
+                data: datapoints4
+            },
             {
                 label: 'ThirdSeries',
                 data: lastDataserie
