@@ -33,9 +33,14 @@
 
     // Call myFunction every 2 sec but only 10 times.
     // 2000 = delay, 5 = repetitions
+    let ready = window.localStorage.setItem("ready", false);
     setIntervalX(function () {
-        myFunction();
-    }, 2000, 10);
+        ready = window.localStorage.getItem("ready");
+        if(ready){
+            window.localStorage.setItem("ready", false);
+            myFunction();
+        }
+    }, 500, 10);
 
     // Print current time to console.
     function myFunction() {

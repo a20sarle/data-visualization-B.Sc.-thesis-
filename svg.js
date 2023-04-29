@@ -6,15 +6,16 @@ const allTemp = HadCRUT5.jsonarray.map(function(e) {
 });
 
 // Change numYears to set how many years to use during measurements
-var numYears = 15;
+var numYears = 86;
 var numDatapoints = 12*numYears;
 var labels = allLabels.slice(0,numDatapoints);
 // Add groups of data below
 var datapoints = allTemp.slice(0,numDatapoints);
 var datapoints2 = allTemp.slice(numDatapoints, numDatapoints*2);
 
-var datapoints3 = allTemp.slice(numDatapoints*2, numDatapoints*2+180);
-var datapoints4 = allTemp.slice(numDatapoints*2*2, numDatapoints*2*2+180);
+// Used for increasing lines by splitting datapoints
+// var datapoints3 = allTemp.slice(numDatapoints*2, numDatapoints*2+180);
+// var datapoints4 = allTemp.slice(numDatapoints*2*2, numDatapoints*2*2+180);
 
 var startNow;
 var endNow;
@@ -34,6 +35,7 @@ var options = {
         },
         events: {
             updated: function() {
+                console.log("Started");
                 startNow = performance.now(); 
             },
             animationEnd: function() {
@@ -43,6 +45,12 @@ var options = {
                 window.localStorage.setItem("elapsed", elapsed);
 
                 console.log(elapsed+'ms');
+
+                console.log(elapsed+", finished");
+
+                console.log(window.localStorage.getItem("ready"));
+                window.localStorage.setItem("ready", true);
+                console.log(window.localStorage.getItem("ready"));
 
                 // let start = window.localStorage.getItem("start");
                 // let end = window.localStorage.getItem("end");
@@ -59,14 +67,14 @@ var options = {
             name: 'SecondSeries',
             data: datapoints2
         },
-        {
-            name: 'new',
-            data: datapoints3
-        },
-        {
-            name: 'new2',
-            data: datapoints4
-        },
+        // {
+        //     name: 'new',
+        //     data: datapoints3
+        // },
+        // {
+        //     name: 'new2',
+        //     data: datapoints4
+        // },
         {
             name: 'ThirdSeries',
             data: lastDataserie
