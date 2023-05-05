@@ -22,6 +22,7 @@ function getLabel(i) {
 }
 
 // Change numYears to adjust quantity of datapoints to generate
+// Change to 9000 for 108 000 datapoints
 numYears = 660;
 numMonths = 12*numYears;
 for (let i = 0; i < numMonths; i++) {
