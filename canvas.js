@@ -5,30 +5,28 @@ const allTemp = HadCRUT5.jsonarray.map(function(e) {
     return e.Anomaly;
 });
 
-// Change numYears to set how many years to use during measurements
-var numYears = 25;
-var difference = 12*numYears;
+// Change value of 'months' to set quantity of datapoints.
+// Set according to: Total amount of datapoints divided by the number of lines to be used.
+// Do not remove +1. Used since the first value is measurement of load time and not run-time interaction.
+var months = 1000/2;
 let startingNum = 0;
 function getValue(){
     startingNum++;
-    let value = startingNum * difference;
+    let value = startingNum * months;
     return value;
 }
 
-var labels = allLabels.slice(startingNum,difference);
+var labels = allLabels.slice(startingNum,months);
 // Add groups of data below
-var datapoints = allTemp.slice(startingNum,difference);
+var datapoints = allTemp.slice(startingNum,months);
 var datapoints2 = allTemp.slice(getValue(), getValue());
 
-// Used for increasing lines by splitting datapoints
-var datapoints3 = allTemp.slice(getValue(), getValue());
-var datapoints4 = allTemp.slice(getValue(), getValue());
-
-console.log(difference+" datap. * "+(startingNum/2+1)+" line = "+difference*(startingNum/2+1)+" datap. in tot.");
+console.log(months+" datap. * "+(startingNum/2+1)+" line = "+months*(startingNum/2+1)+" datap. in tot.");
 
 var startNow;
 var endNow;
 var elapsed;
+var i = 0;
 
 const lastDataserie = [];
 labels.forEach(getValues);
@@ -50,14 +48,6 @@ var options = {
                 data: datapoints2
             },
             {
-                label: 'new',
-                data: datapoints3
-            },
-            {
-                label: 'new2',
-                data: datapoints4
-            },
-            {
                 label: 'ThirdSeries',
                 data: lastDataserie
             }
@@ -67,7 +57,8 @@ var options = {
         animation: {
             duration: 1,
             onProgress: function() {
-                console.log("Started");
+                i++;
+                console.log("Started - "+i);
                 startNow = performance.now();          
             },
             onComplete: function() {
@@ -77,12 +68,8 @@ var options = {
                 window.localStorage.setItem("elapsed", elapsed);
 
                 console.log(elapsed+'ms');
-
-                console.log(window.localStorage.getItem("ready"));
                 
                 window.localStorage.setItem("ready", true);
-
-                console.log(window.localStorage.getItem("ready"));
 
                 // let start = window.localStorage.getItem("start");
                 // let end = window.localStorage.getItem("end");
