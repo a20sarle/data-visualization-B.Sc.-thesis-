@@ -8,7 +8,13 @@ const allTemp = HadCRUT5.jsonarray.map(function(e) {
 // Change value of 'months' to set quantity of datapoints.
 // Set according to: Total amount of datapoints divided by the number of lines to be used.
 // Do not remove +1. Used since the first value is measurement of load time and not run-time interaction.
-var months = 1000/2;
+
+// Baseline = 100
+// Group 1 (small) = 1000
+// Group 1 (medium) = 10 000
+// Group 2 (big) = 100 000
+
+var months = 100/2;
 let startingNum = 0;
 function getValue(){
     startingNum++;
