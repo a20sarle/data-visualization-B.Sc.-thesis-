@@ -14,7 +14,7 @@ const allTemp = HadCRUT5.jsonarray.map(function(e) {
 // Group 1 (medium) = 10 000
 // Group 2 (big) = 100 000
 
-var months = 100/2;
+var months = 100+1/2;
 let startingNum = 0;
 function getValue(){
     startingNum++;
