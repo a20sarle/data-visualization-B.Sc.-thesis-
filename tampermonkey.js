@@ -17,75 +17,76 @@
     // Your code here...
     const measurements = [];
     var seed = 0;
+    var dataPoints = 0;
+    window.localStorage.setItem("done", false);
 
-    // setIntervalX is used as setInterval is predefined.
-    function setIntervalX(callback, delay, repetitions) {
-        let x = 0;
-        let intervalID = setInterval(function () {
-            callback();
-            if (++x === repetitions) {
-                // Used to stop call myFunction.
-                console.log('Complete!');
-                clearInterval(intervalID);
-            }
-        }, delay);
+    // Run function nextAnimation every .5 sec
+    setInterval(nextAnimation, 500);
+
+    // 'done' is set to true in [svg/canvas].js
+    // Run a new measurement if the previous animation has finished
+    function nextAnimation(){
+        let finished = window.localStorage.getItem("done");
+        // localStorage always stores values in strings
+        if(finished == "true"){
+            window.localStorage.setItem("done", false);
+            // 100 run-time interaction datapoint measures
+            if(dataPoints <= 100){
+                dataPoints++;
+                measure();
+            };
+        }
     }
 
-    // Call myFunction every 2 sec but only 10 times.
-    // 2000 = delay, 5 = repetitions
-    let ready = window.localStorage.setItem("ready", false);
-    setIntervalX(function () {
-        ready = window.localStorage.getItem("ready");
-        if(ready){
-            window.localStorage.setItem("ready", false);
-            myFunction();
-        }
-    }, 500, 10);
-
-    // Print current time to console.
-    function myFunction() {
-        let elapsed = 0;
-        // let x = 26 + 190;
-        let x = 1;
+    function randLabel(){
+        // *** C H A N G E: 
+        //      label = 1 (SVG)
+        //      label = 26 + 190 (Canvas)
+        let label = 1;
 
         var chance = new Chance(seed);
         chance = chance.natural({min: 1, max: 20});
 
-        // if (chance % 2 === 0) { x = 324 - 200; }
-        if (chance % 2 === 0) { x = 2; }
+        // *** C H A N G E: 
+        //      label = 2 (SVG)
+        //      label = 324 - 200 (Canvas)
+        if (chance % 2 === 0) { label = 2; }
 
         seed++;
 
-        console.log("chance:"+chance+", x: " + x);
-        clickLabel(x);
-
-        elapsed = window.localStorage.getItem("elapsed");
-
-        measurements.push({ click: x, time: elapsed});
+        return label;
     }
 
-    function clickLabel(x) {
-        let legend = document.querySelector('div.apexcharts-legend div:nth-child('+ x +') span:nth-child('+ x +')');
-        legend.click();
-        
-        // document
-        //     .getElementById('myChart')
-        //     .dispatchEvent(
-        //         new MouseEvent(
-        //             "click", // or "mousedown" if the canvas listens for such an event
-        //             {
-        //                 clientX: x,
-        //                 clientY: 98,
-        //                 // bubbles: true // "bubbling means that you will also receive an event when any child receives the event."
-        //             }
-        //         )
-        //     );
+    function click(label) {
+        // *** C H A N G E: SVG ↓ 
+            let legend = document.querySelector('div.apexcharts-legend div:nth-child('+ label +') span:nth-child('+ label +')');
+            legend.click();
+
+        // *** C H A N G E: Canvas ↓
+            // document
+            //     .getElementById('myChart')
+            //     .dispatchEvent(
+            //         new MouseEvent(
+            //             "click", // or "mousedown" if the canvas listens for such an event
+            //             {
+            //                 clientX: x,
+            //                 clientY: 98,
+            //                 // bubbles: true // "bubbling means that you will also receive an event when any child receives the event."
+            //             }
+            //         )
+            //     );
     }
+
+    function measure() {
+        let label = randLabel();
+        click(label);
+        let elapsed = window.localStorage.getItem("elapsed");
+        measurements.push({ click: label, time: elapsed});
+     }
 
     // Download generated data
     var downloadBtn = document.getElementById('saveData');
-    // downloadBtn.setAttribute("download", "canvas-pilot-measurements.json");
-    downloadBtn.setAttribute("download", "svg-pilot-measurements.json");
+    downloadBtn.setAttribute("download", "file-title-here.json");
     downloadBtn.onclick = function () {
         var measurementData = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(measurements, undefined, 2));
         downloadBtn.setAttribute("href", measurementData);

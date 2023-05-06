@@ -74,7 +74,7 @@ var options = {
 
                 console.log(elapsed+'ms');
                 
-                window.localStorage.setItem("ready", true);
+                window.localStorage.setItem("done", true);
 
                 // let start = window.localStorage.getItem("start");
                 // let end = window.localStorage.getItem("end");
