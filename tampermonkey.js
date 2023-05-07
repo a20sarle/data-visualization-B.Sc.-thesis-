@@ -72,7 +72,7 @@
             //         new MouseEvent(
             //             "click", // or "mousedown" if the canvas listens for such an event
             //             {
-            //                 clientX: x,
+            //                 clientX: label,
             //                 clientY: 98,
             //                 // bubbles: true // "bubbling means that you will also receive an event when any child receives the event."
             //             }
