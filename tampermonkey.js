@@ -32,8 +32,11 @@
             window.localStorage.setItem("done", false);
             // 100 run-time interaction datapoint measures
             if(dataPoints <= 100){
-                dataPoints++;
+                ++dataPoints;
                 measure();
+            };
+            if(dataPoints > 100){
+                console.log("Completed!");
             };
         }
     }
