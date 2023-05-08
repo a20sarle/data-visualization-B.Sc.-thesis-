@@ -26,7 +26,7 @@
     var measurePoint = setInterval(nextAnimation, 500);
 
     function cancelMeasure(start, end){
-        if(end - start > 3000){
+        if(end - start > 9000){
             console.log("Timed out, not interactive!");
             clearTimeout(measurePoint);
         }
