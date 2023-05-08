@@ -21,12 +21,13 @@
     window.localStorage.setItem("done", false);
     let startOfMeasure = 0;
     let endOfMeasure = 0;
+    let firstInit = false;
 
     // Run function nextAnimation every .5 sec
     var measurePoint = setInterval(nextAnimation, 500);
 
     function cancelMeasure(start, end){
-        if(end - start > 9000){
+        if(firstInit == true && end - start > 9000){
             console.log("Timed out, not interactive!");
             clearTimeout(measurePoint);
         }
@@ -96,6 +97,7 @@
         click(label);
         let elapsed = window.localStorage.getItem("elapsed");
         measurements.push({ click: label, time: elapsed});
+        firstInit = true;
      }
 
     // Download generated data
