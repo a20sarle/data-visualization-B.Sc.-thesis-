@@ -19,19 +19,31 @@
     var seed = 0;
     var dataPoints = 0;
     window.localStorage.setItem("done", false);
+    let startOfMeasure = 0;
+    let endOfMeasure = 0;
 
     // Run function nextAnimation every .5 sec
-    setInterval(nextAnimation, 500);
+    var measurePoint = setInterval(nextAnimation, 500);
+
+    function cancelMeasure(start, end){
+        if(end - start > 3000){
+            console.log("Timed out, not interactive!");
+            clearTimeout(measurePoint);
+        }
+    }
 
     // 'done' is set to true in [svg/canvas].js
     // Run a new measurement if the previous animation has finished
     function nextAnimation(){
+        endOfMeasure = performance.now();
+        cancelMeasure(startOfMeasure, endOfMeasure);
         let finished = window.localStorage.getItem("done");
         // localStorage always stores values in strings
         if(finished == "true"){
             window.localStorage.setItem("done", false);
             // 100 run-time interaction datapoint measures
             if(dataPoints <= 100){
+                startOfMeasure = performance.now();
                 ++dataPoints;
                 measure();
             } else {
