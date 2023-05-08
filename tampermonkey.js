@@ -34,8 +34,7 @@
             if(dataPoints <= 100){
                 ++dataPoints;
                 measure();
-            };
-            if(dataPoints > 100){
+            } else {
                 console.log("Completed!");
             };
         }
