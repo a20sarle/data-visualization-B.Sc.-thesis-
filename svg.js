@@ -83,6 +83,16 @@ var options = {
     ],
     xaxis: {
         categories: labels
+    },
+    yaxis: {
+        min: -0.8,
+        max: 0.2,
+        tickAmount: 6,
+        labels: {
+            formatter: function (val) {
+                return val.toFixed(1);
+            }
+        }
     }
 }
 
